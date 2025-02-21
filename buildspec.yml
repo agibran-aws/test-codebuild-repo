@@ -2,21 +2,14 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo "Fixing PowerShell permissions"
+      - chmod 755 /opt/microsoft/powershell/7.5.0/pwsh
+      - ls -la /opt/microsoft/powershell/7.5.0/pwsh  # Verify new permissions
       - echo "Testing PowerShell execution"
       - echo "Diagnostic Information:"
       - uname -a
-      - cat /etc/os-release
-      - ls -la /usr/bin/pwsh
-      - ls -la /opt/microsoft/powershell/7.5.0/pwsh
-      - file /opt/microsoft/powershell/7.5.0/pwsh
-      - stat /opt/microsoft/powershell/7.5.0/pwsh
-      - ldd /opt/microsoft/powershell/7.5.0/pwsh || echo "Cannot read dependencies"
       - whoami
       - groups
-      # Check SELinux status
-      - sestatus || echo "SELinux not installed"
-      # Check mount points
-      - mount | grep opt || echo "No specific opt mount"
   pre_build:
     commands:
       - pwsh --version
