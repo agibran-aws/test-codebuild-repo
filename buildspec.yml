@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo "Testing PowerShell execution"
+      - echo "Diagnostic Information:"
+      - uname -a
+      - cat /etc/os-release
+      - ls -la /usr/bin/pwsh
+      - file /usr/bin/pwsh
+      - whoami
+      - groups
+  pre_build:
+    commands:
+      - pwsh --version
