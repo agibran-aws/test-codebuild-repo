@@ -2,14 +2,9 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Fixing PowerShell permissions"
-      - chmod 755 /opt/microsoft/powershell/7.5.0/pwsh
-      - ls -la /opt/microsoft/powershell/7.5.0/pwsh  # Verify new permissions
-      - echo "Testing PowerShell execution"
-      - echo "Diagnostic Information:"
-      - uname -a
-      - whoami
-      - groups
-  pre_build:
-    commands:
-      - pwsh --version
+      - echo "Image Information:"
+      - cat /etc/image-version || echo "No image-version file"
+      - cat /etc/system-release || echo "No system-release file"
+      - cat /etc/os-release
+      - echo "CodeBuild Information:"
+      - env | grep CODEBUILD
