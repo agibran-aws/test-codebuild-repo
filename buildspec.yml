@@ -2,9 +2,4 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Image Information:"
-      - cat /etc/image-version || echo "No image-version file"
-      - cat /etc/system-release || echo "No system-release file"
-      - cat /etc/os-release
-      - echo "CodeBuild Information:"
-      - env | grep CODEBUILD
+      - echo "noelia"
